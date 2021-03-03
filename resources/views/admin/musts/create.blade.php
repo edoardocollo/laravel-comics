@@ -3,7 +3,7 @@
 @section('content')
 <h1>musts > create</h1>
 
-          <form action="{{route('musts.store')}}" method="post">
+          <form action="{{route('musts.store')}}" method="post" enctype="multipart/form-data" >
             @csrf
 
 
@@ -26,7 +26,13 @@
              <input type="text" class="form-control" id="contenuto" name="contenuto">
            </div>
 
-           
+
+           <div class="form-group">
+             <label for="img">img:</label>
+             <input type="file" class="form-control" id="img" name="img">
+           </div>
+
+
            <button type="submit" class="btn btn-success">Submit</button>
           </form>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Must;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class MustController extends Controller
 {
 
@@ -48,11 +48,18 @@ class MustController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $img = Storage::disk('public')->put('posts_img', $request->img);
+
+
+
+
         $newMust = new Must;
         $newMust->titolo = $request->titolo;
         $newMust->sottotitolo = $request->sottotitolo;
         $newMust->contenuto = $request->contenuto;
-        $newMust->img = 'img';
+        $newMust->img = $img;
         $newMust->save();
         return redirect()->route('musts.index');
     }

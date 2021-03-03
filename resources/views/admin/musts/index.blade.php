@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           <h1>admin > musts</h1>
-          <a href="{{route('musts.create')}}"class="btn btn-success">aggiungi aricolo</a>
+          <a href="{{route('musts.create')}}"class="btn btn-success">aggiungi must read</a>
           <table class="table table-striped">
           <thead>
           <tr>

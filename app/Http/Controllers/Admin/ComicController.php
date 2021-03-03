@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Comic;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class ComicController extends Controller
 {
 
@@ -49,7 +49,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-
+        $img = Storage::disk('public')->put('posts_img', $request->img);
         $newComic = new Comic;
         $newComic->titolo = $request->titolo;
         $newComic->prezzo = $request->prezzo;
@@ -58,7 +58,7 @@ class ComicController extends Controller
         $newComic->serie = $request->serie;
         $newComic->volume = $request->volume;
         $newComic->pagine = $request->pagine;
-        $newComic->img = 'img';
+        $newComic->img = $img;
         $newComic->save();
         return redirect()->route('comics.index');
     }

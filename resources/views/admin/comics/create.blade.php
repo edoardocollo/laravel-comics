@@ -3,7 +3,7 @@
 @section('content')
 <h1>comics > create</h1>
 
-          <form action="{{route('comics.store')}}" method="post">
+          <form action="{{route('comics.store')}}" method="post" enctype="multipart/form-data" >
             @csrf
 
 
@@ -50,7 +50,13 @@
              <input type="numbers" class="form-control" id="pagine" name="pagine">
            </div>
 
-           
+
+           <div class="form-group">
+             <label for="img">img:</label>
+             <input type="file" class="form-control" id="img" name="img">
+           </div>
+
+
            <button type="submit" class="btn btn-success">Submit</button>
           </form>
 
