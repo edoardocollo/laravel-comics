@@ -27,7 +27,8 @@ class ComicController extends Controller
      */
     public function index()
     {
-        dd('ciao');
+        $comics = Comic::all();
+        return view('admin.comics.index', compact('comics'));
     }
 
     /**
@@ -37,7 +38,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.comics.create');
     }
 
     /**
@@ -48,7 +49,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $newComic = new Comic;
+        $newComic->titolo = $request->titolo;
+        $newComic->prezzo = $request->prezzo;
+        $newComic->disponibilita = $request->disponibilita === 'on'?true:false ;
+        $newComic->descrizione = $request->descrizione;
+        $newComic->serie = $request->serie;
+        $newComic->volume = $request->volume;
+        $newComic->pagine = $request->pagine;
+        $newComic->img = 'img';
+        $newComic->save();
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -57,9 +69,10 @@ class ComicController extends Controller
      * @param  \App\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show( $comic)
     {
-        //
+        $comic = Comic::find($comic);
+        return view('admin.comics.show', compact('comic'));
     }
 
     /**
@@ -68,9 +81,10 @@ class ComicController extends Controller
      * @param  \App\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $comic)
+    public function edit($comic)
     {
-        //
+        $comic = Comic::find($comic);
+        return view('admin.comics.edit',compact('comic'));
     }
 
     /**
@@ -80,9 +94,19 @@ class ComicController extends Controller
      * @param  \App\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(Request $request,  $comic)
     {
-        //
+        $comic = Comic::find($comic);
+        $comic->titolo = $request->titolo;
+        $comic->prezzo = $request->prezzo;
+        $comic->disponibilita = $request->disponibilita === 'on'?true:false ;
+        $comic->descrizione = $request->descrizione;
+        $comic->serie = $request->serie;
+        $comic->volume = $request->volume;
+        $comic->pagine = $request->pagine;
+        $comic->img = 'img';
+        $comic->update();
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -91,8 +115,11 @@ class ComicController extends Controller
      * @param  \App\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comic $comic)
+    public function destroy( $comic)
     {
-        //
+        $comic = Comic::find($comic);
+        $comic->delete();
+        return redirect()->route('comics.index');
+
     }
 }
