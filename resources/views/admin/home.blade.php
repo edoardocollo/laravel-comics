@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
           <a href="{{route('comics.index')}}" class="btn btn-primary">comics</a>
+          <a href="{{route('musts.index')}}" class="btn btn-primary">must read</a>
         </div>
         <div class="col-md-8">
             <div class="card">
