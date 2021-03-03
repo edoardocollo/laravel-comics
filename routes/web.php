@@ -22,3 +22,5 @@ Auth::routes(['register' => false]);
 Route::get('/admin', 'HomeController@index')->name('admin');
 Route::resource('admin/comics', 'Admin\ComicController');
 Route::resource('admin/musts', 'Admin\MustController');
+Route::resource('admin/artists', 'Admin\ArtistController');
+Route::resource('admin/writers', 'Admin\WriterController');
