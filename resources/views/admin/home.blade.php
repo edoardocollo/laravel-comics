@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-4">
+          <a href="{{route('comics.index')}}" class="btn btn-primary">comics</a>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>

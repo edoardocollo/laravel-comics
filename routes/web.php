@@ -20,3 +20,4 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/admin', 'HomeController@index')->name('admin');
+Route::resource('admin/comics', 'Admin\ComicController');
