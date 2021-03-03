@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class WriterController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,9 @@ class WriterController extends Controller
      */
     public function index()
     {
-        //
+
+        $writers = Writer::all();
+        return view('admin.writers.index', compact('writers'));
     }
 
     /**
@@ -25,7 +39,7 @@ class WriterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.writers.create');
     }
 
     /**
@@ -36,7 +50,10 @@ class WriterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $writer = new Writer;
+        $writer->nome = $request->nome;
+        $writer->save();
+        return redirect()->route('writers.index');
     }
 
     /**
@@ -45,9 +62,11 @@ class WriterController extends Controller
      * @param  \App\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function show(Writer $writer)
+    public function show($writer)
     {
-        //
+        $writer = Writer::find($writer);
+
+        return view('admin.writers.show', compact('writer'));
     }
 
     /**
@@ -56,9 +75,11 @@ class WriterController extends Controller
      * @param  \App\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Writer $writer)
+    public function edit( $writer)
     {
-        //
+        $writer = Writer::find($writer);
+        return view('admin.writers.edit', compact('writer'));
+
     }
 
     /**
@@ -68,9 +89,13 @@ class WriterController extends Controller
      * @param  \App\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Writer $writer)
+    public function update(Request $request, $writer)
     {
-        //
+        $writer = Writer::find($writer);
+        $writer->nome = $request->nome;
+        $writer->update();
+        return redirect()->route('writers.index');
+
     }
 
     /**
@@ -79,8 +104,10 @@ class WriterController extends Controller
      * @param  \App\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Writer $writer)
+    public function destroy( $writer)
     {
-        //
+        $writer= Writer::find($writer);
+        $writer->delete();
+        return redirect()->route('writers.index');
     }
 }
