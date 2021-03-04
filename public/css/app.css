@@ -10991,3 +10991,23 @@ a.text-dark:focus {
   color: blue;
 }
 
+#must_read {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+#must_read .carousel {
+  display: flex;
+}
+
+#must_read .carousel .carousel_must_card {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+#must_read .carousel .carousel_must_card img {
+  width: 100%;
+}
+

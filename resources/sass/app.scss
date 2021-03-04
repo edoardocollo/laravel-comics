@@ -7,7 +7,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
 #area_nav {
   height: 60px;
   background-color: blue;
@@ -42,6 +41,22 @@
       };
       span:last-child{
         color: blue;
+      };
+    };
+  };
+}
+#must_read {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  .carousel{
+    display: flex;
+    .carousel_must_card{
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      img{
+        width: 100%;
       };
     };
   };
