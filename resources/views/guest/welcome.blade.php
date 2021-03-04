@@ -44,12 +44,10 @@
   <section id="current_series">
     <h1>current series</h1>
     <div class="carousel">
-      @foreach($musts as $must)
+      @foreach($series as $serie)
       <div class="carousel_must_card">
-        <img src="storage/{{$must->img}}" alt="">
-        <span>{{$must->sottotitolo}}</span>
-        <span>{{$must->titolo}}</span>
-        <p>{{$must->contenuto}}</p>
+        <img src="storage/{{$serie->img}}" alt="">
+        <span>{{$serie->serie}}</span>
       </div>
       @endforeach
     </div>
