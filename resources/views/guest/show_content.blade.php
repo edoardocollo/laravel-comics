@@ -1,7 +1,7 @@
 @extends('layouts.guest_app')
 
 @section('main_content')
-<div class="jumbo_comics">
+<div class="jumbo_comics" style="background-image: url('../storage/posts_img/jumbo.jpg')">
 
 </div>
 

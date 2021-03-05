@@ -11274,6 +11274,9 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
 
 .jumbo_comics {
   height: 370px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
 }
 
 .header_comics {
@@ -11336,7 +11339,7 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
 }
 
 .talent_specs {
-  background-color: #f6f6f6;
+  background-color: #cecece;
 }
 
 .talent_specs .talent_specs_container {
