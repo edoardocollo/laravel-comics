@@ -16,23 +16,55 @@ body {
   overflow-x: hidden;
 }
 #area_nav {
-  height: 40px;
+  height: 50px;
   background-color: #0282F9;
+  .area_nav_wrap{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    height: 100%;
+    .logo_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 10%;
+      border-left: 1px solid white;
+      transform: skewX(-20deg);
+      img {
+        transform: skewX(20deg);
+
+      };
+    };
+    .logo_box:first-child {
+      background-color: white;
+    }
+  }
 }
+
 #main_nav {
+  display: flex;
+  align-items: center;
   height: 115px;
   border-bottom: 1px solid #cecece;
   .main_nav_wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 70%;
     margin: auto;
     ul {
+      height: 100%;
       display: flex;
       list-style: none;
+
       li {
         margin: 0 20px ;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
       };
     };
   };
@@ -59,30 +91,35 @@ body {
     text-transform: uppercase;
   };
   .carousel {
-
     width: 100%;
     display: flex;
-
     overflow: hidden;
-
-
     .carousel_comic_card {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin: 0 .5vw;
-      img {
-        width: 19vw;
-      };
+      a {
+        img {
+          width: 19vw;
+        };
+      }
       span {
         color: white;
+        font-family: 'PT Sans Narrow', sans-serif;
+        text-transform: uppercase;
       };
       span:last-child{
         color: #0282F9;
+        font-size: 14px;
       };
     };
   };
 }
+
+
+
+
 #must_read {
   display: flex;
   flex-direction: column;
@@ -102,15 +139,24 @@ body {
   };
   .carousel{
     display: flex;
-    width: 80%;
+    width: 70%;
     margin: auto;
     .carousel_must_card{
+      padding: 0 5px;
       display: flex;
       flex-direction: column;
       width: 25%;
       img{
         width: 100%;
       };
+      span{
+        font-family: 'PT Sans Narrow', sans-serif;
+        text-transform: uppercase;
+      };
+      .subtitle {
+        color: #0282F9;
+        font-size: 14px;
+      }
     };
   };
 }
@@ -136,12 +182,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 80%;
+    width: 70%;
     margin: auto;
     .carousel_serie_card {
       width: 15%;
       img {
         width: 100%;
+      };
+      p {
+        font-family: 'PT Sans Narrow', sans-serif;
+        text-transform: uppercase;
       }
     }
   }
@@ -156,6 +206,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .service_box {
+      font-family: 'PT Sans Narrow', sans-serif;
+      color: white;
+      text-transform: uppercase;
+    }
   }
 }
 footer {
@@ -169,23 +224,77 @@ footer {
   background-size: cover;
   height: 460px;
   .footer_wrap{
-    width: 80%;
+    position: relative;
+    display: flex;
+    width: 70%;
     margin: auto;
     .footer_half {
       display: flex;
+      flex-wrap: wrap;
       width: 50%;
       .footer_column {
         width: 25%;
+        h3{
+          font-family: 'PT Sans Narrow', sans-serif;
+          text-transform: uppercase;
+          font-size: 20px;
+        };
+        ul {
+          list-style: none;
+          color: #959595;
+          li {
+            font-size: 14px;
+            line-height: 14px;
+          };
+        };
       };
+      p {
+        width: 80%;
+        color: #959595;
+        font-size: 14px;
+        line-height: 14px;
+      }
     };
   };
+  #logo_background {
+    position: absolute;
+    height: 210%;
+    top: -70%;
+    right: 10%;
+  }
   .sub_footer{
-    height: 60px;
+    display: flex;
+    align-items: center;
+    height: 80px;
     width: 100%;
     background-color: #303030;
     position: absolute;
     bottom: 0;
-
+    .sub_footer_wrap {
+      display: flex;
+      width: 70%;
+      margin: auto;
+      .sub_footer_left{
+        display: flex;
+        align-items: center;
+        width: 50%;
+        a {
+          font-family: 'PT Sans Narrow', sans-serif;
+          text-transform: uppercase;
+          padding: 10px 20px;
+          color: white;
+          border: 2px solid #0282F9;
+        }
+      };
+      .sub_footer_right{
+        display: flex;
+        justify-content: flex-end;
+        width: 50%;
+        img {
+          margin: 10px;
+        };
+      };
+    }
   };
 }
 .jumbo_comics {
