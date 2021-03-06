@@ -3,7 +3,18 @@
 @section('content')
 <h1>comics > edit</h1>
 
-          <form action="{{route('comics.update',$comic)}}" method="post">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+          <form action="{{route('comics.update',$comic)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
 
@@ -48,6 +59,12 @@
            <div class="form-group">
              <label for="pagine">pagine:</label>
              <input type="numbers" class="form-control" id="pagine" name="pagine" value="{{$comic->pagine}}">
+           </div>
+
+
+           <div class="form-group">
+             <label for="img">img:</label>
+             <input type="file" class="form-control" id="img" name="img">
            </div>
 
 

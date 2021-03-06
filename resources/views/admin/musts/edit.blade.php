@@ -3,7 +3,18 @@
 @section('content')
 <h1>musts > edit</h1>
 
-          <form action="{{route('musts.update',$must)}}" method="post">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+          <form action="{{route('musts.update',$must)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
 
@@ -25,6 +36,13 @@
              <label for="contenuto">contenuto:</label>
              <input type="text" class="form-control" id="contenuto" name="contenuto" value="{{$must->contenuto}}">
            </div>
+
+
+           <div class="form-group">
+             <label for="img">img:</label>
+             <input type="file" class="form-control" id="img" name="img">
+           </div>
+
 
 
            <button type="submit" class="btn btn-success">Submit</button>

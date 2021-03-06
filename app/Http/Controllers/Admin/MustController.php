@@ -48,6 +48,12 @@ class MustController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+          'titolo' => 'required',
+          'sottotitolo' => 'required',
+          'contenuto' => 'required',
+          'img' => 'required | max:500'
+        ]);
 
 
         $img = Storage::disk('public')->put('posts_img', $request->img);
@@ -97,10 +103,22 @@ class MustController extends Controller
      */
     public function update(Request $request, $must)
     {
+
+        $request->validate([
+          'titolo' => 'required',
+          'sottotitolo' => 'required',
+          'contenuto' => 'required',
+          'img' => 'required | max:500'
+        ]);
+
+
         $must = Must::find($must);
+        Storage::delete('posts_img', $request->img);
+        $img = Storage::disk('public')->put('posts_img', $request->img);
         $must->titolo = $request->titolo;
         $must->sottotitolo = $request->sottotitolo;
         $must->contenuto = $request->contenuto;
+        $must->img = $img;
         $must->update();
         return redirect()->route('musts.index');
 

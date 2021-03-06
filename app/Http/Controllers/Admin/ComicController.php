@@ -49,6 +49,19 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+          'titolo' => 'required',
+          'prezzo' => 'required',
+          'disponibilita' => 'required',
+          'descrizione' =>'required',
+          'serie' => 'required',
+          'volume' => 'required',
+          'pagine' => 'required',
+          'img' => 'required | max:500'
+        ]);
+
+
         $img = Storage::disk('public')->put('posts_img', $request->img);
         $newComic = new Comic;
         $newComic->titolo = $request->titolo;
@@ -96,7 +109,22 @@ class ComicController extends Controller
      */
     public function update(Request $request,  $comic)
     {
+
+
+        $request->validate([
+          'titolo' => 'required',
+          'prezzo' => 'required',
+          'disponibilita' => 'required',
+          'descrizione' =>'required',
+          'serie' => 'required',
+          'volume' => 'required',
+          'pagine' => 'required',
+          'img' => 'required | max:500'
+        ]);
+
         $comic = Comic::find($comic);
+        Storage::delete('posts_img', $comic->img);
+        $img = Storage::disk('public')->put('posts_img', $request->img);
         $comic->titolo = $request->titolo;
         $comic->prezzo = $request->prezzo;
         $comic->disponibilita = $request->disponibilita === 'on'?true:false ;
@@ -104,7 +132,7 @@ class ComicController extends Controller
         $comic->serie = $request->serie;
         $comic->volume = $request->volume;
         $comic->pagine = $request->pagine;
-        $comic->img = 'img';
+        $comic->img = $img;
         $comic->update();
         return redirect()->route('comics.index');
     }
