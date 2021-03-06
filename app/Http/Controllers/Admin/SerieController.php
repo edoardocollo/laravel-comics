@@ -50,6 +50,13 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+          'serie' => 'required',
+          'img' => 'required | max:500'
+        ]);
+
+
         $img = Storage::disk('public')->put('posts_img', $request->img);
         $serie = new Serie;
         $serie->serie = $request->serie;
@@ -92,8 +99,19 @@ class SerieController extends Controller
      */
     public function update(Request $request,  $serie)
     {
+
+        $request->validate([
+          'serie' => 'required',
+          'img' => 'required | max:500'
+        ]);
+
+
+
         $serie = Serie::find($serie);
+        Storage::delete('posts_img', $request->img);
+        $img = Storage::disk('public')->put('posts_img', $request->img);
         $serie->serie = $request->serie;
+        $serie->img = $img;
         $serie->update();
         return redirect()->route('series.index');
     }
