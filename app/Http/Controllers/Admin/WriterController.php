@@ -50,6 +50,11 @@ class WriterController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request = $request->validate([
+          'nome' => 'required',
+        ]);
+
         $writer = new Writer;
         $writer->nome = $request->nome;
         $writer->save();
@@ -91,6 +96,11 @@ class WriterController extends Controller
      */
     public function update(Request $request, $writer)
     {
+
+        $request = $request->validate([
+          'nome' => 'required',
+        ]);
+
         $writer = Writer::find($writer);
         $writer->nome = $request->nome;
         $writer->update();

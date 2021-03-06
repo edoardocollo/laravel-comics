@@ -50,6 +50,10 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
+        $request = $request->validate([
+          'nome' => 'required',
+        ]);
+
         $artist = new Artist;
         $artist->nome = $request->nome;
         $artist->save();
@@ -89,6 +93,11 @@ class ArtistController extends Controller
      */
     public function update(Request $request, $artist)
     {
+
+        $request = $request->validate([
+          'nome' => 'required',
+        ]);
+
         $artist = Artist::find($artist);
         $artist->nome = $request->nome;
         $artist->update();
