@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Comic;
+use App\Artist;
+use App\Writer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +40,9 @@ class ComicController extends Controller
      */
     public function create()
     {
-      return view('admin.comics.create');
+      $artists = Artist::all();
+      $writers = Writer::all();
+      return view('admin.comics.create', compact('artists','writers'));
     }
 
     /**
