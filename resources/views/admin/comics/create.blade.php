@@ -68,6 +68,12 @@
            </div>
 
            <div class="form-group">
+             <label for="jumbo">jumbo:</label>
+             <input type="file" class="form-control" id="jumbo" name="jumbo">
+           </div>
+
+
+           <div class="form-group">
              <label for="artisti">artisti:</label>
              <select class="" name="artisti" multiple>
                @foreach($artists as $artist)

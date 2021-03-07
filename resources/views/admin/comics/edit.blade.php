@@ -68,6 +68,31 @@
            </div>
 
 
+
+           <div class="form-group">
+             <label for="jumbo">jumbo:</label>
+             <input type="file" class="form-control" id="jumbo" name="jumbo">
+           </div>
+
+
+           <div class="form-group">
+             <label for="artisti">artisti:</label>
+             <select class="" name="artisti[]" multiple>
+               @foreach($artists as $artist)
+               <option value="{{$artist->id}}">{{$artist->nome}}</option>
+               @endforeach
+             </select>
+           </div>
+           <div class="form-group">
+             <label for="autori">autori:</label>
+             <select class="" name="autori[]" multiple>
+               @foreach($writers as $writer)
+               <option value="{{$writer->id}}">{{$writer->nome}}</option>
+               @endforeach
+             </select>
+           </div>
+
+
            <button type="submit" class="btn btn-success">Submit</button>
           </form>
 

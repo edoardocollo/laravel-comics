@@ -54,6 +54,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
           'titolo' => 'required',
           'prezzo' => 'required',
@@ -62,11 +63,15 @@ class ComicController extends Controller
           'serie' => 'required',
           'volume' => 'required',
           'pagine' => 'required',
-          'img' => 'required | max:500'
+          'img' => 'required | max:500',
+          'jumbo' => 'required | max:500',
+          'artisti' => 'exists:artists,id',
+          'autori' => 'exists:writers,id'
         ]);
 
 
         $img = Storage::disk('public')->put('posts_img', $request->img);
+        $jumbo = Storage::disk('public')->put('posts_img', $request->jumbo);
         $newComic = new Comic;
         $newComic->titolo = $request->titolo;
         $newComic->prezzo = $request->prezzo;
@@ -76,7 +81,11 @@ class ComicController extends Controller
         $newComic->volume = $request->volume;
         $newComic->pagine = $request->pagine;
         $newComic->img = $img;
+        $newComic->jumbo = $jumbo;
         $newComic->save();
+        $newComic->artists()->attach($request->artisti);
+        $newComic->writers()->attach($request->autori);
+
         return redirect()->route('comics.index');
     }
 
@@ -100,8 +109,10 @@ class ComicController extends Controller
      */
     public function edit($comic)
     {
+        $artists = Artist::all();
+        $writers = Writer::all();
         $comic = Comic::find($comic);
-        return view('admin.comics.edit',compact('comic'));
+        return view('admin.comics.edit',compact('comic','artists','writers'));
     }
 
     /**
@@ -123,12 +134,17 @@ class ComicController extends Controller
           'serie' => 'required',
           'volume' => 'required',
           'pagine' => 'required',
-          'img' => 'required | max:500'
+          'img' => 'required | max:500',
+          'jumbo' => 'required | max:500',
+          'artisti' => 'exists:artists,id',
+          'autori' => 'exists:writers,id'
         ]);
 
         $comic = Comic::find($comic);
         Storage::delete('posts_img', $comic->img);
+        Storage::delete('posts_img', $comic->jumbo);
         $img = Storage::disk('public')->put('posts_img', $request->img);
+        $jumbo = Storage::disk('public')->put('posts_img', $request->jumbo);
         $comic->titolo = $request->titolo;
         $comic->prezzo = $request->prezzo;
         $comic->disponibilita = $request->disponibilita === 'on'?true:false ;
@@ -137,7 +153,11 @@ class ComicController extends Controller
         $comic->volume = $request->volume;
         $comic->pagine = $request->pagine;
         $comic->img = $img;
+        $comic->jumbo = $jumbo;
         $comic->update();
+        $comic->artists()->sync($request->artisti);
+        $comic->writers()->sync($request->autori);
+
         return redirect()->route('comics.index');
     }
 

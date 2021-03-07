@@ -11277,6 +11277,7 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+  background-attachment: fixed;
 }
 
 .header_comics {
@@ -11306,6 +11307,7 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
 }
 
 .comics_content_wrap .comics_content_container h1 {
+  color: #003f5e;
   font-family: "PT Sans Narrow", sans-serif;
   text-transform: uppercase;
   margin: 50px 0;
@@ -11315,6 +11317,7 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
   display: flex;
   height: 50px;
   color: white;
+  font-family: "PT Sans Narrow", sans-serif;
   background-color: #55ba59;
 }
 
@@ -11325,6 +11328,12 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
   line-height: 50px;
   border-bottom: 1px solid #357739;
   border-right: 1px solid #357739;
+  padding: 0 20px;
+}
+
+.comics_content_wrap .comics_content_container .price_box .left span:last-child {
+  text-transform: uppercase;
+  color: #b0fd9c;
 }
 
 .comics_content_wrap .comics_content_container .price_box .right {
@@ -11339,22 +11348,69 @@ footer .sub_footer .sub_footer_wrap .sub_footer_right img {
 }
 
 .talent_specs {
-  background-color: #cecece;
+  background-color: #f6f6f6;
+  border-top: 1px solid #e6e6e6;
+  padding: 30px 0;
 }
 
 .talent_specs .talent_specs_container {
   display: flex;
+  justify-content: space-between;
   width: 70%;
   margin: auto;
 }
 
 .talent_specs .talent_specs_container .talents_wrap {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.talent_specs .talent_specs_container .talents_wrap h3 {
+  color: #003f5e;
+  font-family: "PT Sans Narrow", sans-serif;
+  border-bottom: 1px solid #e6e6e6;
+  margin: 0px;
+  padding-bottom: 30px;
+}
+
+.talent_specs .talent_specs_container .talents_wrap .talent_specs_row {
+  border-top: 1px solid white;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 40px;
+}
+
+.talent_specs .talent_specs_container .talents_wrap span:first-child {
+  display: inline-block;
+  width: 35%;
+  color: #003f5e;
+  font-family: "PT Sans Narrow", sans-serif;
 }
 
 .talent_specs .talent_specs_container .specs_wrap {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 48%;
+}
+
+.talent_specs .talent_specs_container .specs_wrap h3 {
+  color: #003f5e;
+  font-family: "PT Sans Narrow", sans-serif;
+  border-bottom: 1px solid #e6e6e6;
+  margin: 0px;
+  padding-bottom: 30px;
+}
+
+.talent_specs .talent_specs_container .specs_wrap .talent_specs_row {
+  border-top: 1px solid white;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 40px;
+}
+
+.talent_specs .talent_specs_container .specs_wrap span:first-child {
+  display: inline-block;
+  width: 35%;
+  color: #003f5e;
+  font-family: "PT Sans Narrow", sans-serif;
 }
 
